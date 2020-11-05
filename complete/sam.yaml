@@ -24,6 +24,6 @@ Resources:
 Outputs:
   MyServiceApi:
     Description: URL for application
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/find-primes-below/{number}'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ping'
     Export:
       Name: MicronautPrimeFinder

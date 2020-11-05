@@ -19,6 +19,11 @@ if [ "${ROLE_ARN}" == "" ]; then
     exit 1
 fi
 
-aws lambda create-function --function-name prime-finder \
---zip-file fileb://build/function.zip --handler function.handler --runtime provided \
---role ${ROLE_ARN}
+FUNCTION_STATE=`aws lambda get-function --function-name prime-finder | grep State | cut -d'"' -f4`
+if [ "${FUNCTION_STATE}" == "Active" ]; then
+    echo "Updating function code..."
+    aws lambda update-function-code --function-name prime-finder --zip-file fileb://build/function.zip
+else
+    echo "Creating function..."
+    aws lambda create-function --function-name prime-finder --zip-file fileb://build/function.zip --handler function.handler --runtime provided --role ${ROLE_ARN}
+fi

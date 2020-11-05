@@ -1,5 +1,8 @@
 include::{commondir}/common-mn2-lambda.adoc[]
 
+NOTE: This is a guide for Micronaut 1.x. To get started w/ Micronaut 2.x, AWS Lambda, API Gateway & GraalVM, refer to
+https://guides.micronaut.io/mn-application-aws-lambda-graalvm/guide/index.html[this guide], as the steps have changed fairly significantly.
+
 https://aws.amazon.com/lambda/[AWS Lambda] is a dynamically scaled and billed-per-execution compute service. Instances of Lambdas are added and removed dynamically.
 
 When a new instance handles its first request, the response time increases, which is called a cold start. After that request is processed, the instance stays alive (≈10 m) to be reused for subsequent requests.
